@@ -30,6 +30,8 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Meme App requires permission to access your photo library to create Memes</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Meme App requires permission to access your camera to create Memes</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
