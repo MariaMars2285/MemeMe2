@@ -69,27 +69,26 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    // Presents an image picker if camera is available
-    @IBAction func openCamera(_ sender: Any) {
+    // Presents an image picker with the given sourceType.
+    func chooseSourceType(sourceType: UIImagePickerControllerSourceType) {
         
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+        if UIImagePickerController.isSourceTypeAvailable(sourceType) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
-            imagePicker.sourceType = .camera;
+            imagePicker.sourceType = sourceType
             imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
         }
     }
     
-    // Presents an image picker with Photo Album source type.
+    
+    @IBAction func openCamera(_ sender: Any) {
+        
+        chooseSourceType(sourceType: .camera)
+    }
+    
     @IBAction func openAlbum(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = .photoLibrary;
-            imagePicker.allowsEditing = true
-            self.present(imagePicker, animated: true, completion: nil)
-        }
+        chooseSourceType(sourceType: .photoLibrary)
     }
     
     // Clears the image and text, unhides label and dismisses keyboard
@@ -118,7 +117,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         
         let imageToShare = [ image ]
         let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        
         activityViewController.popoverPresentationController?.sourceView = self.view
+        
+        self.save()
+        
+        activityViewController.completionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
+            if completed == true {
+                self.save()
+            }
+        }
+        
         self.present(activityViewController, animated: true, completion: nil)
     }
     
@@ -130,6 +139,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         UIGraphicsEndImageContext()
     }
     
+    //Save Memes - To be implemented in Meme 2.0
+    func save() {
+        _ = Meme(topText: topTextField.text, bottomText: bottomTextField.text, originalImage: imageView.image!, memedImage: memedImage!)
+        
+    }
 }
 
 // UIImagePickerControllerDelegate Methods
