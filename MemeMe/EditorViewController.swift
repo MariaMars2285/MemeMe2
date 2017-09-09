@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  EditorViewController.swift
 //  MemeMe
 //
 //  Created by Maria  on 6/26/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UINavigationControllerDelegate {
+class EditorViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var secondView: UIView!
     
@@ -34,8 +34,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(EditorViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(EditorViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
     }
     
@@ -98,6 +98,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         chooseImageLabel.isHidden = false
+        
+        dismiss(animated: true, completion: nil)
+
     }
     
     func dismissKeyboard() {
@@ -147,7 +150,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
 }
 
 // UIImagePickerControllerDelegate Methods
-extension ViewController: UIImagePickerControllerDelegate {
+extension EditorViewController: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true, completion: nil)
@@ -159,7 +162,7 @@ extension ViewController: UIImagePickerControllerDelegate {
 }
 
 // UITextFieldDelegate Methods
-extension ViewController: UITextFieldDelegate {
+extension EditorViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         textField.text = nil
