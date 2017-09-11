@@ -8,9 +8,6 @@
 
 import UIKit
 
-protocol EditorViewControllerDelegate {
-    func savedMeme(meme: Meme)
-}
 
 
 class EditorViewController: UIViewController, UINavigationControllerDelegate {
@@ -34,8 +31,6 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var topTextField: UITextField!
     
     var memedImage: UIImage?
-    
-    var delegate: EditorViewControllerDelegate?
     
     
     override func viewDidLoad() {
@@ -130,8 +125,6 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
         
         activityViewController.popoverPresentationController?.sourceView = self.view
         
-        self.save()
-        
         activityViewController.completionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
             if completed == true {
                 self.save()
@@ -152,7 +145,7 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
     //Save Memes - To be implemented in Meme 2.0
     func save() {
         let meme = Meme(topText: topTextField.text, bottomText: bottomTextField.text, originalImage: imageView.image!, memedImage: memedImage!)
-        self.delegate?.savedMeme(meme: meme)
+        SentMemesModel.instance.add(meme: meme)
         dismiss(animated: true, completion: nil)
         
     }
