@@ -13,7 +13,6 @@ protocol EditorViewControllerDelegate {
 }
 
 
-
 class EditorViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var secondView: UIView!

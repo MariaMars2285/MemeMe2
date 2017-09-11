@@ -14,17 +14,8 @@ class SentMemesViewController: UIViewController {
     
     fileprivate let itemSpacing: CGFloat = 1
     
-    @IBOutlet weak var tabBar: UITabBar!
-    
     @IBOutlet weak var collectionView: UICollectionView!
 
-    enum SentMemesViewControllerType {
-        
-        case list
-        case grid
-    }
-    
-    fileprivate var vcType = SentMemesViewControllerType.list
     
     var data: [Meme] = [
         Meme(topText: "Maria", bottomText: "Selvam", originalImage: UIImage(named: "LaunchImage")!, memedImage: UIImage(named: "LaunchImage")!),
@@ -35,7 +26,7 @@ class SentMemesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBar.selectedItem = self.tabBar.items?.first
+        
         //self.performSegue(withIdentifier: "showEditor", sender: nil)
 
     }
@@ -67,24 +58,14 @@ extension SentMemesViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridCell", for: indexPath) as! GridCell
+        let meme = data[indexPath.item]
+        cell.topLabel.text = meme.topText
+        cell.bottomLabel.text = meme.bottomText
+        cell.imageView.image = meme.originalImage
+        return cell
         
-        if self.vcType == .grid {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridCell", for: indexPath) as! GridCell
-            let meme = data[indexPath.item]
-            cell.topLabel.text = meme.topText
-            cell.bottomLabel.text = meme.bottomText
-            cell.imageView.image = meme.originalImage
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListCell", for: indexPath) as! ListCell
-            let meme = data[indexPath.item]
-            cell.topLabel.text = meme.topText
-            cell.bottomLabel.text = meme.bottomText
-            cell.fullText.text = (meme.topText ?? "") + "..." + (meme.bottomText ?? "")
-            cell.imageView.image = meme.originalImage
-            return cell
-
-        }
     }
 }
 
@@ -102,15 +83,11 @@ extension SentMemesViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        if self.vcType == .grid {
-            let totalWidth = self.view.bounds.size.width - 2 * itemSpacing
-            print(totalWidth)
-            let itemWidth = totalWidth / itemsPerRow
-            print(itemWidth)
-            return CGSize(width: itemWidth, height: itemWidth)
-        } else {
-            return CGSize(width: self.view.bounds.width, height: 150)
-        }
+        let totalWidth = self.view.bounds.size.width - 2 * itemSpacing
+        print(totalWidth)
+        let itemWidth = totalWidth / itemsPerRow
+        print(itemWidth)
+        return CGSize(width: itemWidth, height: itemWidth)
         
     }
     
@@ -120,18 +97,7 @@ extension SentMemesViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
-extension  SentMemesViewController: UITabBarDelegate {
-    
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        if item.tag == 0 {
-            self.vcType = .list
-        } else if item.tag == 1 {
-            self.vcType = .grid
-        }
-        
-        self.collectionView.reloadData()
-    }
-}
+
 
 extension SentMemesViewController: EditorViewControllerDelegate {
     
