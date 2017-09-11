@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListCell: UICollectionViewCell {
+class ListCell: UITableViewCell {
     
     @IBOutlet weak var topLabel: UILabel!
     
@@ -16,6 +16,6 @@ class ListCell: UICollectionViewCell {
     
     @IBOutlet weak var fullText: UILabel!
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var memeImageView: UIImageView!
 
 }
