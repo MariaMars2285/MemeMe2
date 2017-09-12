@@ -34,4 +34,8 @@ class SentMemesModel {
     public func meme(atIndex index: Int) -> Meme {
         return data[index]
     }
+    
+    public func delete(atIndex index: Int) {
+        data.remove(at: index)
+    }
 }

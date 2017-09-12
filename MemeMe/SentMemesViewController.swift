@@ -15,22 +15,22 @@ class SentMemesGridViewController: UIViewController {
     fileprivate let itemSpacing: CGFloat = 1
     
     @IBOutlet weak var collectionView: UICollectionView!
-
     
     
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //self.performSegue(withIdentifier: "showEditor", sender: nil)
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.collectionView.reloadData()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -48,7 +48,7 @@ extension SentMemesGridViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridCell", for: indexPath) as! GridCell
         let meme = SentMemesModel.instance.meme(atIndex: indexPath.item)
         cell.topLabel.text = meme.topText
@@ -74,9 +74,7 @@ extension SentMemesGridViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let totalWidth = self.view.bounds.size.width - 2 * itemSpacing
-        print(totalWidth)
         let itemWidth = totalWidth / itemsPerRow
-        print(itemWidth)
         return CGSize(width: itemWidth, height: itemWidth)
         
     }
