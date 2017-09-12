@@ -48,9 +48,7 @@ extension SentMemesGridViewController: UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridCell", for: indexPath) as! GridCell
         let meme = SentMemesModel.instance.meme(atIndex: indexPath.item)
-        cell.topLabel.text = meme.topText
-        cell.bottomLabel.text = meme.bottomText
-        cell.imageView.image = meme.originalImage
+        cell.setupCellWith(meme: meme)
         return cell
         
     }

@@ -42,7 +42,7 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(EditorViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(EditorViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        shareButton.isEnabled = false
+        shareButton.isEnabled = origImage != nil 
         
         if topText != nil {
             topTextField.text = topText
@@ -190,11 +190,9 @@ extension EditorViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == topTextField {
-            bottomTextField.becomeFirstResponder()
-        } else {
-            bottomTextField.resignFirstResponder()
-        }
+        
+       _ = textField == topTextField ? bottomTextField.becomeFirstResponder() : bottomTextField.resignFirstResponder()
+       
         return true
     }
     

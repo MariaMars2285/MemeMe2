@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -258,11 +257,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pha-HW-fq0">
-                                            <rect key="frame" x="0.0" y="0.0" width="155.5" height="129.5"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pha-HW-fq0">
+                                            <rect key="frame" x="0.0" y="0.0" width="130" height="129.5"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="130" id="h5t-Lc-Zy0"/>
+                                            </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggl-Dt-Oa6">
-                                            <rect key="frame" x="0.0" y="9" width="155.5" height="21"/>
+                                            <rect key="frame" x="0.0" y="9" width="130" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="7YO-h3-qia"/>
                                             </constraints>
@@ -271,7 +274,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8l9-Qr-gVx">
-                                            <rect key="frame" x="0.0" y="99.5" width="155.5" height="21"/>
+                                            <rect key="frame" x="0.0" y="99.5" width="130" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="lw5-Wp-eIB"/>
                                             </constraints>
@@ -280,7 +283,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VsX-0g-7D7">
-                                            <rect key="frame" x="163.5" y="49.5" width="195.5" height="30"/>
+                                            <rect key="frame" x="138" y="49.5" width="221" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="2L4-wo-gGe"/>
                                             </constraints>
@@ -293,7 +296,6 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="8l9-Qr-gVx" secondAttribute="bottom" constant="1" id="5dq-Ou-w0O"/>
                                         <constraint firstItem="8l9-Qr-gVx" firstAttribute="leading" secondItem="WDF-eo-bLs" secondAttribute="leading" id="81O-JP-0wA"/>
                                         <constraint firstItem="VsX-0g-7D7" firstAttribute="centerY" secondItem="WDF-eo-bLs" secondAttribute="centerY" id="EPr-eL-3Af"/>
-                                        <constraint firstItem="pha-HW-fq0" firstAttribute="width" secondItem="WDF-eo-bLs" secondAttribute="height" multiplier="1.2" id="IKs-7o-63T"/>
                                         <constraint firstItem="8l9-Qr-gVx" firstAttribute="width" secondItem="pha-HW-fq0" secondAttribute="width" id="M5Q-g1-Mq9"/>
                                         <constraint firstItem="ggl-Dt-Oa6" firstAttribute="top" secondItem="WDF-eo-bLs" secondAttribute="topMargin" constant="1" id="SZy-DJ-yro"/>
                                         <constraint firstItem="ggl-Dt-Oa6" firstAttribute="leading" secondItem="WDF-eo-bLs" secondAttribute="leading" id="Soj-tj-1Bq"/>
@@ -342,7 +344,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sWN-ED-AVM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sWN-ED-AVM">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                         </subviews>

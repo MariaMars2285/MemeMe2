@@ -17,5 +17,13 @@ class ListCell: UITableViewCell {
     @IBOutlet weak var fullText: UILabel!
     
     @IBOutlet weak var memeImageView: UIImageView!
+    
+    func setupCellWith(meme: Meme) {
+        topLabel.text = meme.topText
+        bottomLabel.text = meme.bottomText
+        fullText.text = (meme.topText ?? "") + "..." + (meme.bottomText ?? "")
+        memeImageView.image = meme.originalImage
+
+    }
 
 }

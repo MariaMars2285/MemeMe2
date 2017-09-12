@@ -46,10 +46,7 @@ class SentMemesListViewController: UITableViewController {
         
         let meme = SentMemesModel.instance.meme(atIndex: indexPath.row)
         
-        cell.topLabel.text = meme.topText
-        cell.bottomLabel.text = meme.bottomText
-        cell.fullText.text = (meme.topText ?? "") + "..." + (meme.bottomText ?? "")
-        cell.memeImageView.image = meme.originalImage
+        cell.setupCellWith(meme: meme)
         
         return cell
     }

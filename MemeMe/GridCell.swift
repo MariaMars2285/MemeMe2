@@ -16,4 +16,10 @@ class GridCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    func setupCellWith(meme: Meme) {
+        topLabel.text = meme.topText
+        bottomLabel.text = meme.bottomText
+        imageView.image = meme.originalImage
+        
+    }
 }
