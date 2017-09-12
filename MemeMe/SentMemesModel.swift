@@ -8,6 +8,10 @@
 
 import UIKit
 
+/* Model class for storing Memes. We Use Singleton pattern to create
+   only one instance of the model
+*/
+
 class SentMemesModel {
     
     static let instance = SentMemesModel()

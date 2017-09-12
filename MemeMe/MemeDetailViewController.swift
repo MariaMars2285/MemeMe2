@@ -24,6 +24,7 @@ class MemeDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    /* Presents Editor View Controller with the meme for editing. */
     func editMeme() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nvc = storyboard.instantiateViewController(withIdentifier: "EditorNVC") as! UINavigationController
