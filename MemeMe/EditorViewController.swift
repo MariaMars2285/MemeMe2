@@ -32,12 +32,30 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
     
     var memedImage: UIImage?
     
+    var topText: String?
+    var bottomText: String?
+    var origImage: UIImage?
+    
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(EditorViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(EditorViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        shareButton.isEnabled = false
+        
+        if topText != nil {
+            topTextField.text = topText
+        }
+        
+        if bottomText != nil {
+            bottomTextField.text = bottomText
+        }
+        
+        if origImage != nil {
+            chooseImageLabel.isHidden = true
+            imageView.image = origImage
+        }
         
     }
     
@@ -64,7 +82,6 @@ class EditorViewController: UIViewController, UINavigationControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -158,6 +175,7 @@ extension EditorViewController: UIImagePickerControllerDelegate {
         picker.dismiss(animated: true, completion: nil)
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         imageView.image = image
+        shareButton.isEnabled = true
         chooseImageLabel.isHidden = true
     }
     

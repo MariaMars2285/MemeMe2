@@ -12,6 +12,9 @@ class SentMemesListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if SentMemesModel.instance.count() == 0 {
+            self.performSegue(withIdentifier: "showEditorFromList", sender: nil)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

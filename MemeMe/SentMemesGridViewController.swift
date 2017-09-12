@@ -17,13 +17,11 @@ class SentMemesGridViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //self.performSegue(withIdentifier: "showEditor", sender: nil)
-        
+        if SentMemesModel.instance.count() == 0 {
+            self.performSegue(withIdentifier: "showEditor", sender: nil)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
